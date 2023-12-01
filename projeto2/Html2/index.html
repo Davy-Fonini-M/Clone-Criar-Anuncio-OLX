@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/projeto2/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/projeto2/img/Logo_olx.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>OLX - O Maior Site de Compra e Venda do Brasil</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/projeto2/img/Ficticia.png" alt="logo">
+        </div>
+    </div>
+
+    <!--Criar anuncio-->
+    <div class="form-container">
+        <form action="your_form_handler.php" method="post">
+            <div class="form-header">
+                <h3>Criar Anúncio</h3>
+            </div>
+
+            <div class="form-body">
+                <div class="image-container">
+                    <label for="fileInput" id="addFilesBtn">+</label>
+                    <input type="file" id="fileInput" accept="image/*" multiple>
+                    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Adicionar imagem-->
+            <script src="/projeto2/Javascript/funções/carrossel.js"></script>
+
+            <script>
+                document.getElementById('addFilesBtn').addEventListener('click', function () {
+                    document.getElementById('fileInput').click();
+                });
+            
+                document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+            </script>
+        
+
+            <div class="box-input">
+                <label for="title">
+                    <strong>Título do anúncio</strong> <span class="required-field">*</span>
+                </label>
+                <input type="text" name="title" class="block" placeholder="Ex: Samsung S9 novo na caixa" minlength="1" maxlength="30" required>
+            </div>
+            <label for="price">
+                <strong>Descrição</strong> <span class="required-field">*</span>
+                </label>
+            <div class="box-input">
+                
+                <input type="text" name="description" class="block" placeholder="Ex: Smartphone Samsung Galaxy S9 com 128GB de memória, com caixa, todos os cabos e sem marca de uso." minlength="1" maxlength="500" required>
+            </div>
+
+
+            <!--CATEGORIAS-->
+            <div class="box-input">
+                <label for="Category">
+                    <strong>Categoria</strong><span class="required-field">*</span>
+                </label>
+                <select name="category" id="category" class="block">
+                    <optgroup label="Eletrônicos e Celulares">
+                        <option value="Selecione" selected>Selecione</option>
+                        <option value="video-games">Videogames</option>
+                        <option value="computadores">Computadores e Acessórios</option>
+                        <option value="celulares">Celulares e Telefonia</option>
+                        <option value="celulares">Àudio,TV,vídeo e fotografia</option>
+                    </optgroup>
+            </select>
+            </div>
+
+             <!--MODELOS-->
+            <div class="box-input">
+                <label for="brand">
+                    <strong>Marca</strong><span class="required-field">*</span>
+                </label>
+                <select name="brand" id="brand" class="block">
+                    <option value="Selecione" selected>Selecione</option>
+                    <option value="apple">Apple</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="motorola">Motorola</option>
+                    <option value="huawei">Huawei</option>
+                    <option value="xiaomi">Xiaomi</option>
+                    <option value="asus">Asus</option>
+                    <option value="nokia">Nokia</option>
+                </select>
+            </div>
+
+            <script src="/projeto2/Javascript/funções/model.js"></script>
+
+            <div class="box-input">
+                <label for="model">
+                    <strong>Modelo</strong>
+                    <span class="required-field">*</span>
+                </label>
+                <select name="model" id="model" class="block">
+                    <option value="Selecione" selected>Selecione</option>
+                    <!-- Options will be dynamically added here using JavaScript -->
+                </select>
+            </div>
+            
+<div class="optional-box">
+    <label for="battery-health">
+       <strong>Saúde da bateria</strong> <span class="required-field">*</span>
+    </label>
+    <select name="battery-health" id="battery-health" class="block">
+        <option value="Perfect">Perfeita(95% até 100%)</option>
+        <option value="Good">Boa(80% até 94%)</option>
+        <option value="Ok">Ok(60% até 79%)</option>
+        <option value="Bad">Ruim(40% até 59%)</option>
+        <option value="Very-Bad">Muito Ruim(abaixo de 39%)</option>
+    </select>
+</div>
+
+ <!-- Cep -->
+
+ <script src="/projeto2/Javascript/funções/cep.js"></script>
+
+ <div class="zip-code">
+     <label for="zip-code"><strong>Cep</strong><span class="required-field">*</span></label>
+     <input type="text" name="zip-code" id="zip-code-input" class="block" placeholder="Digite o CEP" onblur="getAddress()">
+     <div id="address-details"></div>
+ </div>
+ 
+ <!-- Alerta OLX -->
+ <div class="alertaOlx">
+
+    <label for="hiddenPhone">
+        <i class="fas fa-check-square"></i>
+        <strong>Ocultar meu telefone neste anúncio</strong>
+    </label>
+</div>
+
+<div class="alertaOlx">
+    <p><i class="fas fa-exclamation-circle"></i>Não pedimos códigos por ligação, WhatsApp ou chat.Desconfie se alguém
+    entrar em contato em nome da OLX.</p>
+</div>
+
+  
+</script>
+
+ <!-- Preços -->
+   <!-- Conteúdo da Página -->
+    <div class="box-input">
+        <label for="price" id="bold">
+           <strong>Preço </strong> <span class="required-field">*</span>
+        </label>
+        <input type="text" name="price" id="price" class="block" placeholder="R$" required>
+    </div>
+
+    <!-- Adicione o código JavaScript diretamente no corpo da página -->
+    <script>
+        document.getElementById('price').addEventListener('input', function () {
+            var priceInput = this;
+            var value = priceInput.value.replace(/\D/g, ''); // Remove não números
+
+            // Formatação para o formato de moeda
+            if (value.length > 0) {
+                value = parseFloat(value);
+                priceInput.value = 'R$ ' + (value / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            } else {
+                priceInput.value = ''; // Limpa o valor se estiver vazio
+            }
+        });
+    </script>
+
+<!--Enviar anuncio-->
+<div class="btn">
+    <button value="submit">Enviar anúncio</button>
+</div>
+
+<p>Ao Publicar você concorda e aceita nossos <a href="https://ajuda.olx.com.br/s/article/politica-de-privacidade" class="termos">Termos de Uso </a> e <a href="https://ajuda.olx.com.br/s/article/politica-de-privacidade" class="termos"> Privacidade</a></p>
+
+
+</body>
+</html>
